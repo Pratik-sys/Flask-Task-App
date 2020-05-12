@@ -13,9 +13,11 @@
         <h1>Update task</h1>
     </div>
     <form action="/update/{{task_update.id}}" method="POST">
-        <input type="text" name="content" id="content" value="{{task_update.content}}">
-        <input type="submit" value="Update">
+        <input id="content" type="text" name="content" class="validate" value="{{task_update.content}}">
 
+        <button class="btn waves-effect waves-light" type="submit" name="action">Update
+            <i class="material-icons left">send</i>
+        </button>
     </form>
 
 </div>
