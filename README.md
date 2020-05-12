@@ -1,7 +1,7 @@
 # Flask-TODO
 ---
 
-- The is Flask-TODO is totally CRUD based application 
+- The Flask-TODO is basic CRUD application 
 
 -  App uses sqlite database 
 
