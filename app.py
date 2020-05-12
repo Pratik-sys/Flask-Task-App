@@ -49,7 +49,7 @@ def update(id):
         task_update.content = request.form['content']
         
         try:
-            db.session.comit()
+            db.session.commit()
             return redirect('/')
         except:
             return "Issue in updating the task"
