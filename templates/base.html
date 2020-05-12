@@ -4,6 +4,7 @@
 <head>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <!--Import materialize.css-->
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -19,8 +20,27 @@
 </head>
 
 <body>
+    <nav>
+        <div class="nav-wrapper">
+            <a class="brand-logo">Task Master</a>
+        </div>
+    </nav>
     {%block body%}{%endblock%}
 
+    <br>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text"> Open source TODO project</h5>
+                    <p class="white-text text-lighten-4">For code visit
+                        <a class="black-text text-lighten-4 "
+                            href="https://github.com/Pratik-sys/weather-Notifier">Github</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
