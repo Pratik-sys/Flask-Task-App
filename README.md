@@ -1,4 +1,4 @@
-# Flask-TODO
+# Flask Task App
 ---
 
 - The Flask-TODO is basic CRUD application 
@@ -15,3 +15,10 @@ $ python3 app.py
 ## view the deployment
 
 https://flask-app-todo.herokuapp.com/
+
+### TODO
+
+- [ ] Add Login and Signup functionality 
+- [ ] Materialistic UI
+- [ ] Creating the sub tasks.
+- [ ] Refactor the code
