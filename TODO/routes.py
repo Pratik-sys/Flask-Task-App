@@ -2,7 +2,7 @@ from flask import render_template,url_for,request,redirect, flash
 from Todo import app, db, bcrypt
 from Todo.models import Todo, User
 from Todo.forms import RegistrationForm, LoginForm
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user,logout_user
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -75,3 +75,8 @@ def login():
             flash('Logged in Successfully', 'success')
             return redirect(url_for('index'))
     return render_template('login.html', form=form)
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
