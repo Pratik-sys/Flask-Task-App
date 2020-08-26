@@ -2,6 +2,7 @@ from flask import render_template,url_for,request,redirect, flash
 from Todo import app, db, bcrypt
 from Todo.models import Todo, User
 from Todo.forms import RegistrationForm, LoginForm
+from flask_login import login_user, current_user
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -47,6 +48,9 @@ def update(id):
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
     form = RegistrationForm(request.form)
     if  form.validate():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -60,10 +64,14 @@ def signup():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
     form = LoginForm(request.form)
     if  form.validate():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user)
             flash('Logged in Successfully', 'success')
             return redirect(url_for('index'))
     return render_template('login.html', form=form)
