@@ -48,7 +48,7 @@ def update(id):
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     form = RegistrationForm(request.form)
-    if request.method =='POST' and form.validate():
+    if  form.validate():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
@@ -61,7 +61,7 @@ def signup():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
-    if request.method =='POST' and form.validate():
+    if  form.validate():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             flash('Logged in Successfully', 'success')
