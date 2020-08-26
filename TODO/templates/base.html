@@ -17,6 +17,14 @@
   <body>
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">TaskManager</span>
+        <div class="navbar-nav mr-auto"></div>
+        {% if current_user.is_authenticated %}
+        <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+        <a class="nav-item nav-link" href="{{ url_for('signup') }}">Register</a>
+      {% endif %}
+    </div>
       </nav>
         {%block body%}{%endblock%}
         <div class="container">
