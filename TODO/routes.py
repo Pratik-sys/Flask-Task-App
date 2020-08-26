@@ -2,9 +2,10 @@ from flask import render_template,url_for,request,redirect, flash
 from Todo import app, db, bcrypt
 from Todo.models import Todo, User
 from Todo.forms import RegistrationForm, LoginForm
-from flask_login import login_user, current_user,logout_user
+from flask_login import login_user, current_user,logout_user, login_required
 
 @app.route('/', methods=['POST', 'GET'])
+@login_required
 def index():
     if request.method == 'POST':
         task_content = request.form['content']
@@ -21,6 +22,8 @@ def index():
         return render_template('index.html', tasks=tasks)
 
 @app.route('/delete/<int:id>')
+@login_required
+
 def delete(id):
     task_del = Todo.query.get_or_404(id)
 
@@ -32,6 +35,8 @@ def delete(id):
         return "Error in deleting the task"
     
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
+@login_required
+
 def update(id):
     task_update = Todo.query.get_or_404(id)
     if request.method == "POST":
