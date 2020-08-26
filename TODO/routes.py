@@ -1,6 +1,7 @@
 from flask import render_template,url_for,request,redirect
 from Todo import app, db
 from Todo.models import Todo
+from Todo.forms import RegistrtionForm, LoginForm
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -43,3 +44,13 @@ def update(id):
 
     else:
         return render_template('update.html', task_update = task_update)
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    form = RegistrtionForm()
+    return render_template('register.html', form=form)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    return render_template('login.html', form=form)
