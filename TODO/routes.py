@@ -1,7 +1,7 @@
-from flask import render_template,url_for,request,redirect
-from Todo import app, db
-from Todo.models import Todo
-from Todo.forms import RegistrtionForm, LoginForm
+from flask import render_template,url_for,request,redirect, flash 
+from Todo import app, db, bcrypt
+from Todo.models import Todo, User
+from Todo.forms import RegistrationForm, LoginForm
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -45,12 +45,25 @@ def update(id):
     else:
         return render_template('update.html', task_update = task_update)
 
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup', methods=['POST', 'GET'])
 def signup():
-    form = RegistrtionForm()
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash("Account has been created successfully!", "success")
+        return redirect(url_for('login'))
     return render_template('register.html', form=form)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            flash('Logged in Successfully', 'success')
+            return redirect(url_for('index'))
     return render_template('login.html', form=form)
