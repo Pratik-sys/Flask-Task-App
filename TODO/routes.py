@@ -1,25 +1,14 @@
 from flask import render_template,url_for,request,redirect, flash 
 from Todo import app, db, bcrypt
 from Todo.models import Todo, User
-from Todo.forms import RegistrationForm, LoginForm
+from Todo.forms import RegistrationForm, LoginForm, PostForm 
 from flask_login import login_user, current_user,logout_user, login_required
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route("/home")
 @login_required
-def index():
-    if request.method == 'POST':
-        task_content = request.form['content']
-        new_task = Todo(content=task_content)
-
-        try:
-            db.session.add(new_task)
-            db.session.commit()
-            return redirect('/')
-        except:
-            return 'Error while adding task'
-    else:
-        tasks = Todo.query.order_by(Todo.date_created).all()
-        return render_template('index.html', tasks=tasks)
+def home():
+    tasks = Todo.query.order_by(Todo.date_created).all()
+    return render_template('home.html', tasks=tasks)
 
 @app.route('/delete/<int:id>')
 @login_required
@@ -54,7 +43,7 @@ def update(id):
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
 
     form = RegistrationForm(request.form)
     if  form.validate():
@@ -70,7 +59,7 @@ def signup():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
 
     form = LoginForm(request.form)
     if  form.validate():
@@ -78,10 +67,21 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
             flash('Logged in Successfully', 'success')
-            return redirect(url_for('index'))
+            return redirect(url_for('home'))
     return render_template('login.html', form=form)
 
 @app.route("/logout")
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('home'))
+
+@app.route("/post", methods=['POST','GET'])
+def post():
+    form = PostForm(request.form)
+    if form.validate():
+        task = Todo(content=form.content.data)
+        db.session.add(task)
+        db.session.commit()
+        flash('Task Posted!', 'success')
+        return redirect(url_for('home'))
+    return render_template('post.html', form=form)
