@@ -13,3 +13,6 @@ class LoginForm(Form):
     password = PasswordField('Password', [validators.data_required()])
     submit = SubmitField('Login')
 
+class PostForm(Form):
+    content = TextField('Add Task', [validators.data_required()])
+    submit = SubmitField('Post')
