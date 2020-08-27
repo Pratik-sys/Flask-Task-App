@@ -16,3 +16,17 @@ input[type='text'] {
 brand-logo{
     text-align: center;
 }
+.navbar{
+    background-color: #880e4f;
+}
+.nav-link{
+    color: #ffffff;
+}
+
+.nav-link:hover{
+    background-color: white;
+}
+.navbar-brand{
+    color: #ffffff;
+    font-size: 150%;
+}
