@@ -20,10 +20,10 @@ https://flask-app-todo.herokuapp.com/
 
 ### TODO
 
-- [ x ] Add Login and Signup functionality. 
+- [x] Add Login and Signup functionality. 
 - [ ] Add error handling for signup and login page.
 - [ ] Materialistic UI.
 - [ ] Creating the sub tasks.
-- [ x ] Refactor the code.
+- [x] Refactor the code.
 - [ ] check the herkou logs.
 - [ ] Make task user specific.
