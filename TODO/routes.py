@@ -5,6 +5,7 @@ from Todo.forms import RegistrationForm, LoginForm, PostForm
 from flask_login import login_user, current_user,logout_user, login_required
 
 @app.route("/home")
+@app.route("/")
 @login_required
 def home():
     tasks = Todo.query.order_by(Todo.date_created).all()
@@ -27,18 +28,17 @@ def delete(id):
 @login_required
 
 def update(id):
-    task_update = Todo.query.get_or_404(id)
-    if request.method == "POST":
-        task_update.content = request.form['content']
-        
-        try:
-            db.session.commit()
-            return redirect('/')
-        except:
-            return "Issue in updating the task"
+    form = PostForm(request.form)
+    post = Todo.query.get_or_404(id)
+    if form.validate():
+        post.content = form.content.data
+        db.session.commit()
+        flash('Task Updated', 'success')
+        return redirect(url_for('home'))
+    elif request.method == 'GET':
+        form.content.data = post.content
+    return render_template('update.html', form=form)
 
-    else:
-        return render_template('update.html', task_update = task_update)
 
 @app.route('/signup', methods=['POST', 'GET'])
 def signup():
