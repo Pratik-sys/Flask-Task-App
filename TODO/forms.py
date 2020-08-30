@@ -1,4 +1,3 @@
-# from flask_wtf import FlaskForm
 from wtforms import Form, StringField, SubmitField, PasswordField, TextField, validators, ValidationError
 from Todo.models import User
 
