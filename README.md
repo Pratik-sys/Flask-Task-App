@@ -25,4 +25,4 @@ https://flask-app-todo.herokuapp.com/
 - [ ] Creating the sub tasks.
 - [x] Refactor the code.
 - [x] check the herkou logs.
-- [ ] Make task user specific.
+- [x] Make task user specific.
