@@ -20,7 +20,9 @@
                 </thead>
                 <tbody>
                     {% for task in tasks %}
+
                     <tr>
+                        {% if task.author ==current_user %}
                         <td>{{task.content}}</td>
                         <td>{{task.date_created.date()}}</td>
                         <td>
@@ -29,6 +31,7 @@
         
                         </td>
                     </tr>
+                    {%endif%}
                     {% endfor %}
                 </tbody>
             </table>

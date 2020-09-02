@@ -76,7 +76,7 @@ def logout():
 def post():
     form = PostForm(request.form)
     if form.validate():
-        task = Todo(content=form.content.data)
+        task = Todo(content=form.content.data, author=current_user)
         db.session.add(task)
         db.session.commit()
         flash('Task Posted!', 'success')
