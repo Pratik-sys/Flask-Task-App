@@ -12,7 +12,7 @@ class Todo(db.Model,UserMixin):
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
-        return f'{self.id}'
+        return f'{self.id}, {self.content}'
 
 class User(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
