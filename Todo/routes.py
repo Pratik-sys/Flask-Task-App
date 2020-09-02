@@ -16,13 +16,10 @@ def home():
 
 def delete(id):
     task_del = Todo.query.get_or_404(id)
-
-    try:
-        db.session.delete(task_del)
-        db.session.commit()
-        return redirect('/')
-    except:
-        return "Error in deleting the task"
+    db.session.delete(task_del)
+    db.session.commit()
+    flash('Your post has been deleted!', 'success')
+    return redirect(url_for('home'))
     
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 @login_required
