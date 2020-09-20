@@ -5,12 +5,14 @@
 
 -  App uses sqlite database 
 
+- Login, Logout  and Signup functionality 
+
 - Hosted on Herkou 
 
 ### Run your code in local development enviroment
 
 ```bash 
-$ python3 app.py
+$ python3 run.py
 ```
 ## view the deployment
 
@@ -21,7 +23,7 @@ https://flask-app-todo.herokuapp.com/
 
 - [x] Add Login and Signup functionality. 
 - [x] Add error handling for signup and login page.
-- [ ] Materialistic UI.
+- [x] Materialistic UI.
 - [ ] Creating the sub tasks.
 - [x] Refactor the code.
 - [x] check the herkou logs.
