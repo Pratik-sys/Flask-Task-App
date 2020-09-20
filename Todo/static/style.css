@@ -52,6 +52,20 @@ table{
     border-radius: 2px;
     background-color: white;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    
+    transition: background-color 0.5s ease;
 
 }
+td {
+    max-width:100px;
+    width:auto;
+    min-width:10px;
+    }
+
+/* .fa-trash-alt{
+    color: red;
+} */
+/* .fa-trash-alt:hover{
+    color: red;
+    text-shadow: 0 0 2px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);; 
+
+} */

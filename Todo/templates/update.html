@@ -13,7 +13,10 @@
             <form method="POST" action="">
                 {{form.csfr_token}}
                 <div class="form-group">
-                    {{form.content.label(class="form-control-label")}}
+                    <h2 style="color: white;">
+                        {{form.content.label(class="form-control-label")}}
+                    </h2>
+                    
                         {{form.content(class="form-control")}}
                 </div>
                 <div class="form-group">
