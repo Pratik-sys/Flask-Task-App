@@ -24,4 +24,5 @@ class LoginForm(Form):
 
 class PostForm(Form):
     content = TextField('Add Task', [validators.data_required()])
+    title = TextField('Title',[validators.data_required()])
     submit = SubmitField('Post')

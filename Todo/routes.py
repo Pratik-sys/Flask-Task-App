@@ -9,6 +9,12 @@ from flask_login import login_user, current_user,logout_user, login_required
 @login_required
 def home():
     tasks = Todo.query.order_by(Todo.date_created).all()
+    return render_template('display.html', tasks=tasks)
+
+@app.route("/display")
+@login_required
+def display():
+    tasks = Todo.query.order_by(Todo.date_created).all()
     return render_template('home.html', tasks=tasks)
 
 @app.route('/delete/<int:id>')
@@ -78,7 +84,7 @@ def logout():
 def post():
     form = PostForm(request.form)
     if form.validate():
-        task = Todo(content=form.content.data, author=current_user)
+        task = Todo(title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(task)
         db.session.commit()
         flash('Task Posted!', 'success')
