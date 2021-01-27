@@ -1,7 +1,7 @@
 body{
-    font-family: 'B612', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: medium;
-    background-color: #4e342e;
+    background: #222D32;
 
 }
 .page-footer{
@@ -13,11 +13,80 @@ body{
     padding: 10px 10px 10px;    
 }
 input[type='text'] {  
-    font-family: 'B612', sans-serif;
+    background-color: #1A2226;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    outline: 0;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    color: #ECF0F5;
 }
-/* brand-logo{
+input[type='password'] {  
+    background-color: #1A2226;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    outline: 0;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    color: #ECF0F5;
+}
+.form-group {
+    margin-bottom: 40px;
+    outline: 0px;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 2px solid #0DB8DE;
+    outline: 0;
+    background-color: #1A2226;
+    color: #ECF0F5;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0;
+}
+.card-title{
+    margin-top: 15px;
     text-align: center;
-} */
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #ECF0F5;
+}
+.card-img-top{
+    height: 100px;
+    font-size: 80px;
+    line-height: 100px;
+    background: -webkit-linear-gradient(#27EF9F, #0DB8DE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card{
+    margin-top: 75px;
+    height: auto;
+    background: #1A2226;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+label {
+    margin-bottom: 0px;
+}
+
+.form-control-label {
+    font-size: 15px;
+    color: #6C6C6C;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
 .navbar{
     background-color:#00acc1;
@@ -42,10 +111,8 @@ input[type='text'] {
 }
 
 .card{
-    display: inline-block;
-    position: relative;
-    border-radius:5px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-radius: 0px;
+    height: auto;
 }
 .nav-item{
     color: white;
@@ -76,3 +143,15 @@ table{
     width: auto;
     min-width: 10px;
 } */
+.btn-primary-outline{
+    border-color: #0DB8DE;
+    color: #0DB8DE;
+    border-radius: 0px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.btn-primary-outline:hover{
+    background-color: #0DB8DE;
+    right: 0px;
+}
