@@ -118,3 +118,6 @@ label {
     background-color: #0DB8DE;
     right: 0px;
 }
+input[type=checkbox]:checked + label.form-check-label{
+    text-decoration: line-through;
+  }
