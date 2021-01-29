@@ -89,7 +89,7 @@ label {
 }
 
 .navbar{
-    background-color: #f05454;
+    background-color:#41729F;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
@@ -121,3 +121,15 @@ label {
 input[type=checkbox]:checked + label.form-check-label{
     text-decoration: line-through;
   }
+
+.fa-edit{
+    display: inline-block; 
+    margin: 0 10px 0 0;
+}
+.fa-trash{
+    display: inline-block;
+     margin: 0 10px 0 0;
+}
+.alert{
+    margin-bottom: 0;
+}
