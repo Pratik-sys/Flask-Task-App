@@ -89,7 +89,7 @@ label {
 }
 
 .navbar{
-    background-color:#00acc1;
+    background-color: #f05454;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
@@ -103,46 +103,9 @@ label {
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     
 }
-.navbar-brand{
-    text-indent: 40rem;
-    color: #ffffff;
-    font-size: 150%;
-
-}
-
-.card{
-    border-radius: 0px;
-    height: auto;
-}
 .nav-item{
     color: white;
 }
-table{
-    border-radius: 2px;
-    background-color: white;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    transition: background-color 0.5s ease;
-
-}
-/* td {
-    max-width:100px;
-    width:auto;
-    min-width:10px;
-    } */
-
-/* .fa-trash-alt{
-    color: red;
-} */
-/* .fa-trash-alt:hover{
-    color: red;
-    text-shadow: 0 0 2px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);; 
-
-} */
-/* .li{
-    max-width: 50px;
-    width: auto;
-    min-width: 10px;
-} */
 .btn-primary-outline{
     border-color: #0DB8DE;
     color: #0DB8DE;
