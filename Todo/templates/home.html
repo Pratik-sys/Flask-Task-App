@@ -9,32 +9,16 @@
 {% block body%}
 <div class="container" style="margin-top: 8rem;">
     <div class="row d-flex justify-content-center">
-        <div class="col-6">
-            <table class=" table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Task</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for task in tasks %}
-
-                    <tr>
-                        {% if task.author==current_user %}
-                        <td>{{task.content}}</td>
-                        <td>{{task.date_created.date()}}</td>
-                        <td>
-                            <a class="btn btn-danger" style="margin-right: 10px;" href="/delete/{{task.id}}">Delete</a>
-                            <a class="btn btn-primary" href="/update/{{task.id}}">Update</a>
-        
-                        </td>
-                    </tr>
-                    {%endif%}
-                    {% endfor %}
-                </tbody>
-            </table>
+        <div class="col-lg-6 col-md-6">
+            <ul class="list-group">
+                {%for task in tasks%}
+                {%if task.author==current_user%}
+                <li class="list-group-item">
+                    {{task.content}}
+                </li>
+                {%endif%}
+                {%endfor%}
+            </ul>
         </div>
     </div>
 </div>
