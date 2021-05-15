@@ -99,9 +99,6 @@ label {
 input[type=checkbox]:checked + label.form-check-label{
     text-decoration: line-through;
   }
-.alert{
-    margin-bottom: 0;
-}
 .navbar-brand{
     color: #ECF0F5;
 }
