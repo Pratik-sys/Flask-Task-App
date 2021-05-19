@@ -28,3 +28,4 @@ https://flask-app-todo.herokuapp.com/
 - [x] Refactor the code.
 - [x] check the herkou logs.
 - [x] Make task user specific.
+- [x] Jquery function for hiding flash messages.
