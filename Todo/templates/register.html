@@ -1,54 +1,50 @@
 {%extends 'base.html'%} {% block head%}
 <title>Sign Up</title>
 {%endblock%} {% block body%}
-<div class="container">
-  <div class="row d-flex justify-content-center">
-    <div class="col-lg-6">
-      <div class="card">
-        <h4 class="card-title">
-          SIGN UP
-        </h4>
-        <div class="card-body">
-          <form method="POST" action="">
-            {{form.csfr_token}}
-            <div class="form-group">
-              {{form.username.label(class="form-control-label")}} {% if
-              form.username.errors %} {{form.username(class="form-control
-              is-invalid")}}
-              <div class="invalid-feedback">
-                {% for error in form.username.errors %}
-                <span>{{error}}</span>
-                {% endfor %}
-              </div>
-              {% else %} {{form.username(class="form-control", type="text")}} {% endif %}
-            </div>
-            <div class="form-group">
-              {{form.email.label(class="form-control-label")}} {% if
-              form.email.errors %} {{form.email(class="form-control is-invalid")}}
-              <div class="invalid-feedback">
-                {% for error in form.email.errors %}
-                <span>{{error}}</span>
-                {% endfor %}
-              </div>
-              {% else %} {{form.email(class="form-control",type="text")}} {% endif %}
-            </div>
-            <div class="form-group">
-              {{form.password.label(class="form-control-label")}} {% if
-              form.password.errors %} {{form.password(class="form-control
-              is-invalid")}}
-              <div class="invalid-feedback">
-                {% for error in form.password.errors %}
-                <span>{{error}}</span>
-                {% endfor %}
-              </div>
-              {% else %} {{form.password(class="form-control",type="password")}} {% endif %}
-            </div>
-            <div class="form-group">{{form.submit(class="btn btn-primary-outline")}}</div>
-          </form>
+<div class="card">
+  <h4 class="card-title">
+    SIGN UP
+  </h4>
+  <div class="card-body">
+    <form method="POST" action="">
+      {{form.csfr_token}}
+      <div class="form-group">
+        {{form.username.label(class="form-control-label")}} {% if
+        form.username.errors %} {{form.username(class="form-control
+        is-invalid")}}
+        <div class="invalid-feedback">
+          {% for error in form.username.errors %}
+          <span>{{error}}</span>
+          {% endfor %}
         </div>
+        {% else %} {{form.username(class="form-control", type="text")}} {% endif %}
       </div>
-    </div>
-
+      <div class="form-group">
+        {{form.email.label(class="form-control-label")}} {% if
+        form.email.errors %} {{form.email(class="form-control is-invalid")}}
+        <div class="invalid-feedback">
+          {% for error in form.email.errors %}
+          <span>{{error}}</span>
+          {% endfor %}
+        </div>
+        {% else %} {{form.email(class="form-control",type="text")}} {% endif %}
+      </div>
+      <div class="form-group">
+        {{form.password.label(class="form-control-label")}} {% if
+        form.password.errors %} {{form.password(class="form-control
+        is-invalid")}}
+        <div class="invalid-feedback">
+          {% for error in form.password.errors %}
+          <span>{{error}}</span>
+          {% endfor %}
+        </div>
+        {% else %} {{form.password(class="form-control",type="password")}} {% endif %}
+      </div>
+      <div class="form-group text-center">{{form.submit(class="btn btn-primary-outline")}}</div>
+    </form>
   </div>
+  <div class="form-group mb-0">
+    <p class="text-center text-muted">Already Have An Account? <a href="{{url_for('login')}}" id="signup">Sign In</a></p>
+ </div>
 </div>
 {%endblock%}
