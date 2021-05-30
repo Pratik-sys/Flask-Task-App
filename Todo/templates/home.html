@@ -51,8 +51,13 @@
           </label>
         </div>
         <div class="form-buttons">
-          <button type="button" class="btn btn-primary">Update</button>
-          <button type="button" class="btn btn-danger">Delete</button>
+          <a href="/update/{{task.id}}">
+            <button type="button" class="btn btn-primary" id={{task.id}}>Update</button>
+          </a>
+          <a href="/delete/{{task.id}}">
+            <button type="button" class="btn btn-danger" id={{task.id}}>Delete</button>
+          </a>
+          
         </div>
        </li>
       {%endif%}
