@@ -13,9 +13,7 @@ class Todo(db.Model, UserMixin):
     content = db.Column(db.String(200), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-
-    def __repr__(self):
-        return f"{self.id}, {self.content}"
+    flag = db.Column(db.Boolean, default=False)
 
 
 class User(db.Model, UserMixin):
@@ -24,7 +22,4 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(200), nullable=False, unique=True)
     password = db.Column(db.String(60), nullable=False)
     task = db.relationship("Todo", backref="author", lazy=True)
-
-    def __repr__(self):
-        return f"{self.username}"
 
