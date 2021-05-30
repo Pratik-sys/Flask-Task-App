@@ -90,7 +90,6 @@ label {
     background-color: #0DB8DE;
     right: 0px;
 }
-input[type=checkbox]:checked + label.form-check-label{
+input[type=checkbox]:checked + label.strikethrough {
     text-decoration: line-through;
-  }
-
+}
