@@ -1,4 +1,4 @@
-from flask import render_template,url_for,request,redirect, flash
+from flask import render_template,url_for,request,redirect, flash, jsonify, make_response
 from Todo import app, db, bcrypt
 from Todo.models import Todo, User
 from Todo.forms import RegistrationForm, LoginForm, PostForm 
@@ -83,3 +83,12 @@ def post():
         flash('Task Posted!', 'success')
         return redirect(url_for('home'))
     return render_template('post.html', form=form)
+
+@app.route("/getValues", methods=['POST'])
+def getValues ():
+    req = request.get_json(force=True)
+    task = Todo.query.get_or_404(req["value"])
+    task.flag = req["Flag"]
+    db.session.commit()
+    res = make_response(jsonify(req), 200)
+    return res

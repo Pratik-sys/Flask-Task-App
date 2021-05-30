@@ -25,14 +25,14 @@
               Welcome! {{current_user.username.capitalize()}}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('logout')}}">Logout</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-    {%endblock%}
+  {%endblock%}
 
   {% block body%}
   {% if tasks == []%}
@@ -40,37 +40,62 @@
       No Tasks available
   </div>
   {%else%}
-  <div class="table-responsive-md">
-      <table class="table table-borderless">
-          <thead>
-              <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Task</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Update</th>
-                  <th scope="col">Delete</th>
-              </tr>
-          </thead>
-          <tbody>
-              {%for task in tasks%}
-              <tr>
-                  {%if task.author==current_user%}
-                  <td>{{task.id}}</td>
-                  <td>{{task.content}}</td>
-                  <td>{{task.date_created.date()}}</td>
-                  <td>
-                      <a class="btn btn-primary"
-                      href="/update/{{task.id}}">Update</a>
-                  </td>
-                  <td>
-                      <a class="btn btn-danger" style="margin-right: 10px;"
-                          href="/delete/{{task.id}}">Delete</a>
-                  </td>
-                  {%endif%}
-              </tr>
-              {%endfor%}
-          </tbody>
-      </table>
+  <ul class="list-group">
+    {% for task in tasks%}
+      {% if task.author == current_user%}
+      <li class="list-group-item d-flex justify-content-between">
+        <div class="form-check">
+          <input class="form-check-input" {{"checked" if task.flag else "" }} type="checkbox" value="{{task.id}}" id="flexCheckDefault"  onchange="popAlert(this)">
+          <label class="form-check-label strikethrough" for="flexCheckDefault">
+            {{task.content}}
+          </label>
+        </div>
+        <div class="form-buttons">
+          <button type="button" class="btn btn-primary">Update</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+       </li>
       {%endif%}
-  </div>
+    {%endfor%}
+  </ul>
+  {%endif%}
+  <script>
+    function popAlert(elm){
+      if(elm.checked){
+        var newstr = elm.value
+        var flag  = true
+      }
+      else{
+        var newstr = elm.value
+        var flag  = false
+      }
+      var entry = {
+        value : newstr,
+        Flag : flag
+      };
+      fetch(`${window.origin}/getValues`,{
+        method: "POST",
+        credentials: "include",
+        body:JSON.stringify(entry),
+        cache:"no-cache",
+        headers: new Headers({
+          "content-type":"aplication/json"
+        })
+      })
+      .then(function(response){
+        if (response.status !== 200 ){
+          console.log(`Response status is : ${response.status}`);
+          return;
+        }
+        response.json().then(function(data){
+          console.log(data)
+        })
+
+      })
+      .catch(function(err){
+        console.log(err)
+      })
+    };
+  </script>
+  
 {%endblock%}
