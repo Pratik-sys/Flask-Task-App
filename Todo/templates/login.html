@@ -1,12 +1,19 @@
 {%extends 'base.html'%}
 {% block head%}
-<title>Login</title>
+<title>Sign In|TODO</title>
 {%endblock%} 
 {% block body%}
+<legend class="d-flex justify-content-center">
+  <a>
+    <img src="{{url_for('static', filename='task.jpg')}}" style="height:2cm; width:2cm;">  
+    Todo
+  </a>
+
+</legend>
 <div class="card">
   <div class="card-body">
     <h4 class="card-title">
-      LOGIN
+      Sign In
     </h4>
     <form method="POST" action="">
       {{form.csfr_token}}

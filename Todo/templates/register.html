@@ -1,9 +1,15 @@
 {%extends 'base.html'%} {% block head%}
-<title>Sign Up</title>
+<title>Sign Up|TODO</title>
 {%endblock%} {% block body%}
+<legend class="d-flex justify-content-center">
+  <a>
+    <img src="{{url_for('static', filename='task.jpg')}}" style="height:2cm; width:2cm;">  
+    Todo
+  </a>
+</legend>
 <div class="card">
   <h4 class="card-title">
-    SIGN UP
+    Sign Up
   </h4>
   <div class="card-body">
     <form method="POST" action="">
