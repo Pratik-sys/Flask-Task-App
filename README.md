@@ -31,3 +31,4 @@ https://flask-app-todo.herokuapp.com/
 - [x] Jquery function for hiding flash messages.
 - [x] Adding checkboxes to the task.
 - [x] Ajax call for posting data asynchronous to route.
+- [] use blueprints package 

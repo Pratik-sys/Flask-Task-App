@@ -11,7 +11,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS']= False
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
-login_manager.login_view = 'login'
+login_manager.login_view = 'users.login'
 login_manager.login_message_category = 'info'
 
-from Todo import routes 
+from Todo.users.routes import users
+from Todo.todo.routes import todos
+from Todo.main.routes import main
+
+app.register_blueprint(users)
+app.register_blueprint(todos)
+app.register_blueprint(main)
