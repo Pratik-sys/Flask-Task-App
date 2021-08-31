@@ -1,5 +1,6 @@
 from flask import render_template,request,url_for,redirect, flash, Blueprint
 from Todo import  db
+import bleach
 from Todo.models import Todo
 from Todo.todo.forms import PostForm
 from flask_login import current_user, login_required
@@ -22,7 +23,7 @@ def update(id):
     form = PostForm(request.form)
     post = Todo.query.get_or_404(id)
     if form.validate():
-        post.content = form.content.data
+        post.content = bleach.clean(form.content.data)
         db.session.commit()
         flash('Task Updated', 'success')
         return redirect(url_for('main.home'))
@@ -34,7 +35,7 @@ def update(id):
 def post():
     form = PostForm(request.form)
     if form.validate():
-        task = Todo(content=form.content.data, author=current_user)
+        task = Todo(content=bleach.clean(form.content.data), author=current_user)
         db.session.add(task)
         db.session.commit()
         flash('Task Posted!', 'success')

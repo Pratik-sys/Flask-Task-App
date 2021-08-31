@@ -1,5 +1,6 @@
 from flask import render_template,url_for,request,redirect, flash, make_response, jsonify, Blueprint
 from Todo import  db, bcrypt
+import bleach
 from Todo.models import User, Todo
 from Todo.users.forms import RegistrationForm, LoginForm
 from flask_login import login_user, current_user,logout_user
@@ -13,7 +14,7 @@ def signup():
     form = RegistrationForm(request.form)
     if request.method =='POST' and  form.validate():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        user = User(username=bleach.clean(form.username.data), email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
         flash("Account has been created successfully!", "success")
