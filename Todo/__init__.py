@@ -23,9 +23,11 @@ def create_app(config_class=Config):
     from Todo.users.routes import users
     from Todo.todo.routes import todos
     from Todo.main.routes import main
+    from Todo.errors.routes import error
 
     app.register_blueprint(users)
     app.register_blueprint(todos)
     app.register_blueprint(main)
+    app.register_blueprint(error)
 
     return app
