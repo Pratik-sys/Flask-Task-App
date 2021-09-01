@@ -22,20 +22,23 @@ def signup():
     if current_user.is_authenticated:
         return redirect(url_for("main.home"))
     form = RegistrationForm(request.form)
-    if request.method == "POST" and form.validate():
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode(
-            "utf-8"
-        )
-        user = User(
-            username=bleach.clean(form.username.data),
-            email=form.email.data,
-            password=hashed_password,
-        )
-        db.session.add(user)
-        db.session.commit()
-        flash("Account has been created successfully!", "success")
-        return redirect(url_for("users.login"))
-    return render_template("register.html", form=form)
+    try:
+        if request.method == "POST" and form.validate():
+            hashed_password = bcrypt.generate_password_hash(form.password.data).decode(
+                "utf-8"
+            )
+            user = User(
+                username=bleach.clean(form.username.data),
+                email=form.email.data,
+                password=hashed_password,
+            )
+            db.session.add(user)
+            db.session.commit()
+            flash("Account has been created successfully!", "success")
+            return redirect(url_for("users.login"))
+        return render_template("register.html", form=form)
+    except Exception as ex:
+        return (f"Error while adding user to database {ex}"), 500
 
 
 @users.route("/login", methods=["GET", "POST"])
@@ -43,31 +46,41 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for("main.home"))
     form = LoginForm(request.form)
-    if request.method == "POST" and form.validate():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user)
-            flash("Logged in Successfully", "success")
-            return redirect(url_for("main.home"))
-        else:
-            flash(
-                "The Account dosen't match, please check your email and password again",
-                "warning",
-            )
-    return render_template("login.html", form=form)
+    try:
+
+        if request.method == "POST" and form.validate():
+            user = User.query.filter_by(email=form.email.data).first()
+            if user and bcrypt.check_password_hash(user.password, form.password.data):
+                login_user(user)
+                flash("Logged in Successfully", "success")
+                return redirect(url_for("main.home"))
+            else:
+                flash(
+                    "The Account dosen't match, please check your email and password again",
+                    "warning",
+                )
+        return render_template("login.html", form=form)
+    except Exception as ex:
+        return (f"Error while login the user {ex}"), 500
 
 
 @users.route("/logout")
 def logout():
-    logout_user()
-    return redirect(url_for("main.home"))
+    try:
+        logout_user()
+        return redirect(url_for("main.home"))
+    except Exception as ex:
+        return (f"Error while logging out the user {ex}"), 404
 
 
 @users.route("/getValues", methods=["POST"])
 def getValues():
-    req = request.get_json(force=True)
-    task = Todo.query.get_or_404(req["value"])
-    task.flag = req["Flag"]
-    db.session.commit()
-    res = make_response(jsonify(req), 200)
-    return res
+    try:
+        req = request.get_json(force=True)
+        task = Todo.query.get_or_404(req["value"])
+        task.flag = req["Flag"]
+        db.session.commit()
+        res = make_response(jsonify(req), 200)
+        return res
+    except Exception as ex:
+        return (f"Function Error {ex}"), 500
