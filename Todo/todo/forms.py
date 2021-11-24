@@ -1,14 +1,11 @@
 from wtforms import (
     Form,
-    StringField,
     SubmitField,
-    PasswordField,
-    TextField,
-    validators,
-    ValidationError,
+    TextAreaField,
+    validators
 )
 
 
 class PostForm(Form):
-    content = TextField("Add Task", [validators.data_required()])
+    content = TextAreaField("Add Task", [validators.data_required()])
     submit = SubmitField("Post")
