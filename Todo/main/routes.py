@@ -1,11 +1,10 @@
-from flask import render_template, url_for, flash, Blueprint
+from flask import render_template, Blueprint
 from Todo.models import Todo
 from flask_login import login_required
 
 main = Blueprint("main", __name__)
 
 
-@main.route("/home")
 @main.route("/")
 @login_required
 def home():

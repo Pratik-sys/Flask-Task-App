@@ -25,7 +25,7 @@ def post():
 
 @todos.route("/update/<int:id>", methods=["GET", "POST"])
 @login_required
-def update(id):
+def update(id: int):
     form = PostForm(request.form)
     post = Todo.query.get_or_404(id)
     try:
@@ -43,16 +43,16 @@ def update(id):
 
 @todos.route("/delete/<int:id>")
 @login_required
-def delete(id):
+def delete(id: int):
     task_del = Todo.query.get_or_404(id)
     try:
         if task_del:
             db.session.delete(task_del)
             db.session.commit()
             flash("Your post has been deleted!", "success")
-            return render_template("home.html")
+            return redirect(url_for("main.home"))
         else:
             flash("Error", "danger")
-            return render_template("home.html")
+            return redirect(url_for("main.home"))
     except Exception as ex:
         return (f"Error while deleting the task {ex}"), 404

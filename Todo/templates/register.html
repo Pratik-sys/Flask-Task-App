@@ -3,18 +3,18 @@
 {%endblock%} {% block body%}
 <legend class="d-flex justify-content-center">
   <a>
-    <img src="{{url_for('static', filename='task.jpg')}}" style="height:2cm; width:2cm;">  
-    Todo
+    <img
+      src="{{url_for('static', filename='task.jpg')}}"
+      style="height: 2cm; width: 2cm"
+    />
   </a>
 </legend>
-<div class="card">
-  <h4 class="card-title">
-    Sign Up
-  </h4>
+<div class="row">
+  <h3 class="d-flex justify-content-center">Sign Up</h3>
   <div class="card-body">
     <form method="POST" action="">
       {{form.csfr_token}}
-      <div class="form-group">
+      <div class="mb-3">
         {{form.username.label(class="form-control-label")}} {% if
         form.username.errors %} {{form.username(class="form-control
         is-invalid")}}
@@ -23,19 +23,20 @@
           <span>{{error}}</span>
           {% endfor %}
         </div>
-        {% else %} {{form.username(class="form-control", type="text")}} {% endif %}
+        {% else %} {{form.username(class="form-control", type="text")}} {% endif
+        %}
       </div>
-      <div class="form-group">
-        {{form.email.label(class="form-control-label")}} {% if
-        form.email.errors %} {{form.email(class="form-control is-invalid")}}
+      <div class="mb-3">
+        {{form.email.label(class="form-control-label")}} {% if form.email.errors
+        %} {{form.email(class="form-control is-invalid")}}
         <div class="invalid-feedback">
           {% for error in form.email.errors %}
           <span>{{error}}</span>
           {% endfor %}
         </div>
-        {% else %} {{form.email(class="form-control",type="text")}} {% endif %}
+        {% else %} {{form.email(class="form-control",type="email")}} {% endif %}
       </div>
-      <div class="form-group">
+      <div class="mb-3">
         {{form.password.label(class="form-control-label")}} {% if
         form.password.errors %} {{form.password(class="form-control
         is-invalid")}}
@@ -44,13 +45,18 @@
           <span>{{error}}</span>
           {% endfor %}
         </div>
-        {% else %} {{form.password(class="form-control",type="password")}} {% endif %}
+        {% else %} {{form.password(class="form-control",type="password")}} {%
+        endif %}
       </div>
-      <div class="form-group text-center">{{form.submit(class="btn btn-primary-outline")}}</div>
+      <div class="mb-3 text-center">
+        {{form.submit(class="btn btn-primary")}}
+      </div>
     </form>
   </div>
-  <div class="form-group mb-0">
-    <p class="text-center text-muted">Already Have An Account? <a href="{{url_for('users.login')}}" id="signup">Sign In</a></p>
- </div>
 </div>
+<p class="text-center text-muted">
+  Already Have An Account?
+  <a href="{{url_for('users.login')}}" id="signup">Sign In</a>
+</p>
+
 {%endblock%}

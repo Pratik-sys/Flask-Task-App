@@ -1,94 +1,12 @@
-body{
-    font-family: 'Fira Sans', sans-serif;
-    background-color:aliceblue;
-
+body {
+  font-family: "Fira Sans", sans-serif;
+  background-color: aliceblue;
 }
-input[type='text'] {  
-    
-    border: none;
-    border-bottom: 2px solid #0DB8DE;
-    border-top: 0px;
-    border-radius: 0px;
-    outline: 0;
-    margin-bottom: 20px;
-    padding-left: 0px;
-    
-}
-input[type='password'] {  
-    border: none;
-    border-bottom: 2px solid #0DB8DE;
-    border-top: 0px;
-    border-radius: 0px;
-    outline: 0;
-    margin-bottom: 20px;
-    padding-left: 0px;
-}
-.form-group {
-    margin-bottom: 40px;
-    outline: 0px;
+.navbar {
+  background-color: #7d8dd0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.form-control:focus {
-    border-color: inherit;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    border-bottom: 2px solid #0DB8DE;
-    outline: 0;
-}
-
-input:focus {
-    outline: none;
-    box-shadow: 0 0 0;
-}
-.card-title{
-    margin-top: 15px;
-    text-align: center;
-    font-size: 30px;
-    letter-spacing: 2px;
-    margin-top: 15px;
-    font-weight: bold;
-}
-.card-img-top{
-    height: 100px;
-    font-size: 80px;
-    line-height: 100px;
-    background: -webkit-linear-gradient(#27EF9F, #0DB8DE);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.card{
-    margin-top: 75px;
-    height: auto;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-label {
-    margin-bottom: 0px;
-}
-
-.form-control-label {
-    font-size: 15px;
-    color: #6C6C6C;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.navbar{
-    background-color:#7D8DD0;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-.btn-primary-outline{
-    border-color: #0DB8DE;
-    color: #0DB8DE;
-    border-radius: 0px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-.btn-primary-outline:hover{
-    background-color: #0DB8DE;
-    right: 0px;
-}
-input[type=checkbox]:checked + label.strikethrough {
-    text-decoration: line-through;
+input[type="checkbox"]:checked + label.strikethrough {
+  text-decoration: line-through;
 }

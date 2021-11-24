@@ -1,9 +1,4 @@
-from wtforms import (
-    Form,
-    SubmitField,
-    TextAreaField,
-    validators
-)
+from wtforms import Form, SubmitField, TextAreaField, validators
 
 
 class PostForm(Form):
